@@ -1,0 +1,94 @@
+<head>
+    <title>My Web Page</title>
+    <script src="jquery.min.js"></script>
+    <script src="jqColorPicker.min.js"></script>
+    <script type="module" src="main.js"></script>
+    <style>
+        body { overflow: hidden;}
+        #controls { 
+            position: absolute;
+            z-index: 10;
+            border-radius: 10px; border: 1px solid #333; text-align: center; width: 50%; background: #eee; margin: auto; padding: 1em; border-radius: 1em; 
+        }
+        #input { text-align: center; width: 50%; margin: 1em; font-size: 24px; }
+        #play { text-transform: uppercase; background: green; color: white; font-size: 24px; margin-top: 1em; border: 1px solid #333; }
+        .toggle-panel { text-transform: uppercase; background: green; color: white; font-size: 24px; margin-top: 1em; border: 1px solid #333; }
+        #words { 
+            position: absolute;
+            z-index: 0;
+            top: 0; left: 0;
+            text-transform: uppercase; 
+            font-weight: bold; 
+            letter-spacing: 0.2em; 
+            text-align: center; 
+            font-size: 72px; 
+            font-family: Arial, Helvetica, sans-serif
+        }
+        .word { margin-bottom: 2em; }
+        #words div div { display: inline-block; white-space: pre; }
+        .cp-color-picker {
+            z-index: 20;
+        }
+    </style>
+</head>
+<body>
+    <div id="controlsContainer">
+    <button class="toggle-panel">Show/Hide</button>
+    <div id="controls">
+    <textarea id="input" rows="4" cols="50" placeholder="Type something here...">lethargic adventurers
+revealing sacred truth</textarea>
+    <div>
+        <div>
+        <fieldset><legend>Positioning</legend>
+        <label for="positionX">X</label>
+        <input type="range" id="positionX" min="0" max="100" value="10"/>
+        <span id="positionXValue">10</span> %
+        <label for="positionY">Y</label>
+        <input type="range" id="positionY" min="0" max="100" value="50"/>
+        <span id="positionYValue">50</span> %
+        <input type="checkbox" id="rotateLetters" checked/>
+        <label for="rotateLetters" title="Randomly rotate letters">Spin Letters</label>
+        </fieldset>
+        <div>
+            <input type="range" id="wordSpacing" min="0" max="200" value="20">
+            <label for="wordSpacing">Word Spacing</label>
+            <span id="wordSpacingValue">0.2em</span>
+        </div>
+        </div>
+        <fieldset><legend>Font Settings</legend>
+            <input class="color" id="fontColor" value="#000000"/>
+            <select id="fontFamily">
+                <option value="Arial, Helvetica, sans-serif">Arial</option>
+                <option value="'Courier New', Courier, monospace">Courier New</option>
+                <option value="'Times New Roman', Times, serif">Times New Roman</option>
+                <option value="'Lucida Console', Monaco, monospace">Lucida Console</option>
+                <option value="'Brush Script MT', cursive">Brush Script MT</option>
+            </select>
+        <input type="range" id="fontSize" min="10" max="200" value="72">
+        <label for="size">Font Size</label>
+        <span id="sizeValue">72</span> px
+        </fieldset>
+    </div>
+    <fieldset><legend>Animation Settings</legend>
+    <div>
+    <input type="range" id="animationSpeed" min="100" max="5000" value="1000">
+    <label for="animationSpeed" title="How fast the animation plays">Animation Speed</label>
+    <span id="animationSpeedValue">1000</span> ms
+    </div>
+    <div>
+    <input type="range" id="animationPause" value="1000" min="0" max="5000">
+    <label for="animationPause" title="Pause duration between animations">Animation Pause</label>
+    <span id="animationPauseValue">1000</span> ms
+    </div>
+    </fieldset>
+    <button id="play">Play</button>
+    </div>
+    </div>
+    <div id="words"></div>
+    <script>
+        $(document).ready(function() {
+            $('.color').colorPicker();
+        });
+    </script>
+</body>
+</html>
